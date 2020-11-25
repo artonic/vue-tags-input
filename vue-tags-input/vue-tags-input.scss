@@ -4,7 +4,7 @@ $success: #68cd86;
 $warn: #ffb648;
 
 @font-face {
-  font-family: 'icomoon';
+  font-family: 'ti-icomoon';
   src:  url('./assets/fonts/icomoon.eot?7grlse');
   src:  url('./assets/fonts/icomoon.eot?7grlse#iefix') format('embedded-opentype'),
     url('./assets/fonts/icomoon.ttf?7grlse') format('truetype'),
@@ -14,7 +14,7 @@ $warn: #ffb648;
 }
 
 [class^="ti-icon-"], [class*=" ti-icon-"] {
-  font-family: 'icomoon' !important;
+  font-family: 'ti-icomoon' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
