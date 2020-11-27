@@ -197,10 +197,17 @@ export default {
       if (triggerKey) event.preventDefault();
       return !triggerKey;
     },
+    notTab(event) {
+      return event.key !== 'Tab' || event.keyCode !== 9;
+    },
     // Method to call to add a tag
     performAddTags(tag, event, source) {
       // If the input is disabled or the function was invoked by no trigger key → stop
-      if (this.disabled || event && this.noTriggerKey(event, 'addOnKey')) return;
+      if (this.disabled || event && this.notTab(event) && this.noTriggerKey(event, 'addOnKey')) return;
+
+      if (tag && event) {
+        event.preventDefault();
+      }
 
       // Convert the string or object into a tags array
       let tags = [];
@@ -361,9 +368,9 @@ export default {
       if (this.$el.contains(e.target) || this.$el.contains(document.activeElement)) return;
       this.performBlur(e);
     },
-    performBlur() {
+    performBlur(event) {
       // If we should add tags before blurring → add tag
-      if (this.addOnBlur && this.focused) this.performAddTags(this.newTag);
+      if (this.addOnBlur && this.focused) this.performAddTags(this.newTag, event);
 
       // Hide autocomplete layer
       this.focused = false;
